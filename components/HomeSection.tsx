@@ -1,36 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TerminalLines } from './TerminalLines.tsx';
 import { useSection } from './SectionContext.tsx';
+import { useLatest } from '../hooks/useLatest.ts';
+import { ContentBlock } from './ContentBlock.tsx';
 import type { PhotoEntry, Render3DItem, VideoItem, WebdevProjectItem, BlogPostMeta } from '../types/content.ts';
-
-interface LatestState<T> {
-  data: T[];
-  loading: boolean;
-}
-
-const useLatest = <T,>(url: string, limit = 3) => {
-  const [state, setState] = useState<LatestState<T>>({ data: [], loading: true });
-  useEffect(() => {
-    let cancelled = false;
-    fetch(url)
-      .then(r => r.json())
-      .then((items: T[]) => {
-        if (cancelled) return;
-        // naive date sort if possible
-  const hasDate = (x: unknown): x is { date?: string } => !!x && typeof (x as { date?: unknown }).date === 'string';
-        const sorted = [...items].sort((a, b) => {
-          if (hasDate(a) && hasDate(b)) return new Date(b.date!).getTime() - new Date(a.date!).getTime();
-          return 0;
-        });
-        setState({ data: sorted.slice(0, limit), loading: false });
-      })
-      .catch(() => { if (!cancelled) setState({ data: [], loading: false }); });
-    return () => { cancelled = true; };
-  }, [url, limit]);
-  return state;
-};
 
 export const HomeSection: React.FC = () => {
   const { active, setActive } = useSection();
@@ -41,8 +16,8 @@ export const HomeSection: React.FC = () => {
   const webdev = useLatest<WebdevProjectItem>('/data/webdev.json');
 
   return (
-    <div 
-      id="home-content" 
+    <div
+      id="home-content"
       className="content-section"
       style={{ display: active === 'home-content' ? 'block' : 'none' }}
     >
@@ -166,15 +141,5 @@ export const HomeSection: React.FC = () => {
         )}
       </ContentBlock>
     </div>
-  );
-};
-
-const ContentBlock: React.FC<{ title: string; caption: string; onJump: () => void; children: React.ReactNode }> = ({ title, caption, onJump, children }) => {
-  return (
-    <section style={{ marginTop: 40 }}>
-      <h3 className="decrypt-text home-jump-tab" style={{ marginTop: 40, marginBottom: 5, cursor: 'pointer' }} onClick={onJump}>{title}</h3>
-      <p className="typewriter-text" style={{ marginBottom: 20, color: '#00ff9d' }}>{caption}</p>
-      {children}
-    </section>
   );
 };
