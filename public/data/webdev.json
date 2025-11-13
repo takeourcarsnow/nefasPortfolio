@@ -20,6 +20,16 @@
     "tags": ["webdev", "journal", "private", "archive"]
   },
   {
+    "id": "tunedin",
+    "title": "TunedIn",
+    "description": "a social media platform for sharing your favorite music",
+    "image": "images/webdev/tunedin.jpg",
+    "thumbnail": "images/webdev/tunedin.jpg",
+    "url": "",
+    "date": "2025-11-14",
+    "tags": ["webdev", "social", "music"]
+  },
+  {
     "id": "PasakAI",
     "title": "PasakAI.lt",
     "description": "Interactive storytelling platform for creating and sharing AI-generated children stories",
@@ -78,15 +88,5 @@
     "url": "https://asciid.art",
     "date": "2025-07-16",
     "tags": ["webdev", "ascii", "art", "converter"]
-  },
-  {
-    "id": "tunedin",
-    "title": "TunedIn",
-    "description": "a social media platform for sharing your favorite music",
-    "image": "/tunedin.jpg",
-    "thumbnail": "/tunedin.jpg",
-    "url": "",
-    "date": "2025-11-14",
-    "tags": ["webdev", "social", "music"]
   }
 ]

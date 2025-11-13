@@ -12,9 +12,10 @@ const nextConfig = {
 // Note: the site uses inline styles in a few places; to avoid breaking the app we allow 'unsafe-inline' for styles.
 // If you later move inline styles to CSS files you can tighten the policy.
 nextConfig.headers = async () => {
+  const isDev = process.env.NODE_ENV === 'development';
   const csp = [
     "default-src 'self' https:",
-    "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'",
+    `script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: https:",
     "font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com",
