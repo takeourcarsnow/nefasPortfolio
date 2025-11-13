@@ -7,7 +7,7 @@ import { BlogSnippet } from './BlogSnippet.tsx';
 
 interface Post { id: string; title: string; date: string; tags: string[]; content: { en: string[]; lt?: string[] }; }
 
-export const BlogSection: React.FC = () => {
+const BlogSection: React.FC = () => {
   const { active } = useSection();
   const [posts, setPosts] = useState<Post[]>([]);
   const [expanded, setExpanded] = usePersistedState<Set<string>>('expandedPosts', new Set());
@@ -56,3 +56,5 @@ export const BlogSection: React.FC = () => {
     </div>
   );
 };
+
+export default BlogSection;

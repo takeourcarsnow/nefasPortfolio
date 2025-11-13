@@ -27,6 +27,14 @@ export function usePerformanceMonitor() {
         if (entry.entryType === 'largest-contentful-paint') {
           console.log(`LCP: ${entry.startTime}ms`);
         }
+        if (entry.entryType === 'first-input') {
+          const fidEntry = entry as PerformanceEventTiming;
+          console.log(`FID: ${fidEntry.processingStart - fidEntry.startTime}ms`);
+        }
+        if (entry.entryType === 'layout-shift') {
+          const clsEntry = entry as any;
+          console.log(`CLS: ${clsEntry.value}`);
+        }
       });
     });
 
@@ -34,7 +42,7 @@ export function usePerformanceMonitor() {
       // PerformanceObserver.observe accepts an options object for entryTypes
       // defensively ensure observe exists and call with a plain object
       if (typeof observer.observe === 'function') {
-        observer.observe({ entryTypes: ['navigation', 'largest-contentful-paint'] });
+        observer.observe({ entryTypes: ['navigation', 'largest-contentful-paint', 'first-input', 'layout-shift'] });
       } else {
         // eslint-disable-next-line no-console
         console.warn('PerformanceObserver.observe is not a function on this platform');
@@ -63,8 +71,9 @@ export function useFetchJson<T = unknown>(url: string): { data: T | null; loadin
     fetch(url, {
       signal: abortController.signal,
       headers: {
-        'Cache-Control': 'public, max-age=300', // 5 minutes cache
+        'Cache-Control': 'public, max-age=3600', // 1 hour cache
       },
+      next: { revalidate: 3600 }, // For Next.js fetch
     })
       .then(r => {
         if (!r.ok) throw new Error(r.statusText);

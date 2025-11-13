@@ -4,17 +4,19 @@ import { Header } from './Header.tsx';
 import { BackgroundEffects } from './BackgroundEffects.tsx';
 import { WinampPlayer } from './WinampPlayer.tsx';
 import { Navigation } from './Navigation.tsx';
-import { HomeSection } from './HomeSection.tsx';
-import { BlogSection } from './BlogSection.tsx';
-import { PhotoSection } from './PhotoSection.tsx';
-import { VideoSection } from './VideoSection.tsx';
-import { Renders3DSection } from './Renders3DSection.tsx';
-import { WebdevSection } from './WebdevSection.tsx';
-import { MiscSection } from './MiscSection.tsx';
 import { FooterTimestamp } from './FooterTimestamp.tsx';
 import { SectionProvider } from './SectionContext.tsx';
 import { usePerformanceMonitor } from './hooks.ts';
 import { ErrorBoundary } from './ErrorBoundary.tsx';
+
+// Lazy load sections for better performance
+const HomeSection = React.lazy(() => import('./HomeSection.tsx'));
+const BlogSection = React.lazy(() => import('./BlogSection.tsx'));
+const PhotoSection = React.lazy(() => import('./PhotoSection.tsx'));
+const VideoSection = React.lazy(() => import('./VideoSection.tsx'));
+const Renders3DSection = React.lazy(() => import('./Renders3DSection.tsx'));
+const WebdevSection = React.lazy(() => import('./WebdevSection.tsx'));
+const MiscSection = React.lazy(() => import('./MiscSection.tsx'));
 
 // Placeholder removed (unused) to avoid lint warning
 
@@ -38,15 +40,17 @@ const Inner: React.FC = () => {
         <Header />
         <WinampPlayer />
         <Navigation />
-        <main id="content-area">
+        <main id="content-area" role="main">
           <ErrorBoundary>
-            <HomeSection />
-            <VideoSection />
-            <PhotoSection />
-            <Renders3DSection />
-            <WebdevSection />
-            <BlogSection />
-            <MiscSection />
+            <React.Suspense fallback={<div>Loading section...</div>}>
+              <HomeSection />
+              <VideoSection />
+              <PhotoSection />
+              <Renders3DSection />
+              <WebdevSection />
+              <BlogSection />
+              <MiscSection />
+            </React.Suspense>
           </ErrorBoundary>
         </main>
         <footer>

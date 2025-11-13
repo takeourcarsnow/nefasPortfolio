@@ -6,7 +6,7 @@ import { useSection } from './SectionContext.tsx';
 import { useFetchJson } from './hooks.ts';
 import type { VideoItem } from '../lib/types/content.ts';
 
-export const VideoSection: React.FC = () => {
+const VideoSection: React.FC = () => {
   const { active } = useSection();
   const { data, loading, error } = useFetchJson<VideoItem[]>('/data/videos.json');
   return (
@@ -31,3 +31,5 @@ export const VideoSection: React.FC = () => {
     </div>
   );
 };
+
+export default VideoSection;

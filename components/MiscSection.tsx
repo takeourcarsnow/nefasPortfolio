@@ -49,7 +49,7 @@ const AccordionSection: React.FC<{ title: string; children: React.ReactNode }> =
   );
 };
 
-export const MiscSection: React.FC = () => {
+const MiscSection: React.FC = () => {
   const { active } = useSection();
   const links = useFetchJson<LinkItem[]>('/data/links.json');
   const thoughts = useFetchJson<Thought[]>('/data/thoughts.json');
@@ -95,3 +95,5 @@ export const MiscSection: React.FC = () => {
     </div>
   );
 };
+
+export default MiscSection;
