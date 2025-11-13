@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useCallback, useState } from 'react';
 import { useSection } from './SectionContext.tsx';
-import { useTerminalTyping } from '../hooks/useTerminalTyping.ts';
-import { usePersistedState } from '../hooks/usePersistedState.ts';
+import { useTerminalTyping } from '../lib/hooks/useTerminalTyping.ts';
+import { usePersistedState } from '../lib/hooks/usePersistedState.ts';
 import { BlogSnippet } from './BlogSnippet.tsx';
 
 interface Post { id: string; title: string; date: string; tags: string[]; content: { en: string[]; lt?: string[] }; }

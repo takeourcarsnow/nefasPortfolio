@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
-import { blogContent } from '../components/blogContent.ts';
+import { blogContent } from '../../components/blogContent.ts';
 
 export const useTerminalTyping = (active: boolean, sectionId: string) => {
   const terminalRef = useRef<HTMLDivElement | null>(null);

@@ -4,7 +4,7 @@ import React from 'react';
 import { TerminalLines } from './TerminalLines.tsx';
 import { useSection } from './SectionContext.tsx';
 import { useFetchJson } from './hooks.ts';
-import type { VideoItem } from '../types/content.ts';
+import type { VideoItem } from '../lib/types/content.ts';
 
 export const VideoSection: React.FC = () => {
   const { active } = useSection();

@@ -1,8 +1,8 @@
 "use client";
 import React from 'react';
 import { useSection } from './SectionContext.tsx';
-import { sectionTerminalContent } from '../data/sectionTerminalContent.ts';
-import { useTypewriter } from '../hooks/useTypewriter.ts';
+import { sectionTerminalContent } from '../lib/data/sectionTerminalContent.ts';
+import { useTypewriter } from '../lib/hooks/useTypewriter.ts';
 
 export const TerminalLines: React.FC<{ sectionId: string }> = ({ sectionId }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);

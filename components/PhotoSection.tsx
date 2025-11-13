@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { TerminalLines } from './TerminalLines.tsx';
 import { useSection } from './SectionContext.tsx';
 import { useFetchJson } from './hooks.ts';
-import { useFlattenPhotos } from '../utils/flattenPhotos.ts';
+import { useFlattenPhotos } from '../lib/utils/flattenPhotos.ts';
 import { InstagramEmbed } from './InstagramEmbed.tsx';
 import { AlbumItemComponent } from './AlbumItem.tsx';
 import { PhotoItemComponent } from './PhotoItem.tsx';
-import type { PhotoEntry, PhotoItem, AlbumItem } from '../types/content.ts';
+import type { PhotoEntry, PhotoItem, AlbumItem } from '../lib/types/content.ts';
 import { ViewerModal } from './ViewerModal.tsx';
 
 interface FlatPhoto extends PhotoItem { albumTitle?: string; }

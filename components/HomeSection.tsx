@@ -3,9 +3,9 @@
 import React from 'react';
 import { TerminalLines } from './TerminalLines.tsx';
 import { useSection } from './SectionContext.tsx';
-import { useLatest } from '../hooks/useLatest.ts';
+import { useLatest } from '../lib/hooks/useLatest.ts';
 import { ContentBlock } from './ContentBlock.tsx';
-import type { PhotoEntry, Render3DItem, VideoItem, WebdevProjectItem, BlogPostMeta } from '../types/content.ts';
+import type { PhotoEntry, Render3DItem, VideoItem, WebdevProjectItem, BlogPostMeta } from '../lib/types/content.ts';
 
 export const HomeSection: React.FC = () => {
   const { active, setActive } = useSection();

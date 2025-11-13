@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import type { PhotoItem } from '../types/content.ts';
+import type { PhotoItem } from '../lib/types/content.ts';
 
 interface ViewerImageInfoProps {
   photo: PhotoItem;

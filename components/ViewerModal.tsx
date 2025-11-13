@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useRef } from 'react';
-import type { PhotoItem } from '../types/content.ts';
-import { useZoomPan } from '../hooks/useZoomPan.ts';
-import { useNavigation } from '../hooks/useNavigation.ts';
-import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation.ts';
-import { useTouchSwipe } from '../hooks/useTouchSwipe.ts';
+import type { PhotoItem } from '../lib/types/content.ts';
+import { useZoomPan } from '../lib/hooks/useZoomPan.ts';
+import { useNavigation } from '../lib/hooks/useNavigation.ts';
+import { useKeyboardNavigation } from '../lib/hooks/useKeyboardNavigation.ts';
+import { useTouchSwipe } from '../lib/hooks/useTouchSwipe.ts';
 import { ViewerModalButtons } from './ViewerModalButtons.tsx';
 import { ViewerImageInfo } from './ViewerImageInfo.tsx';
 

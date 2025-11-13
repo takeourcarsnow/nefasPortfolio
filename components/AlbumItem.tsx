@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { LazyImage } from './LazyImage.tsx';
-import type { AlbumItem } from '../types/content.ts';
+import type { AlbumItem } from '../lib/types/content.ts';
 
 interface AlbumItemProps {
   album: AlbumItem;

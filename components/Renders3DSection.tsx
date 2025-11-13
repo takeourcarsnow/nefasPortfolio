@@ -4,7 +4,7 @@ import React from 'react';
 import { TerminalLines } from './TerminalLines.tsx';
 import { useSection } from './SectionContext.tsx';
 import { useFetchJson } from './hooks.ts';
-import type { Render3DItem } from '../types/content.ts';
+import type { Render3DItem } from '../lib/types/content.ts';
 
 export const Renders3DSection: React.FC = () => {
   const { active } = useSection();

@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { LazyImage } from './LazyImage.tsx';
-import type { PhotoItem } from '../types/content.ts';
+import type { PhotoItem } from '../lib/types/content.ts';
 
 interface FlatPhoto extends PhotoItem { albumTitle?: string; }
 

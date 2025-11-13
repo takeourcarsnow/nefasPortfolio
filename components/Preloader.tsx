@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from 'react';
-import { preloaderFrames } from '../utils/preloader.ts';
+import { preloaderFrames } from '../lib/utils/preloader.ts';
 
 interface PreloaderProps {
   onComplete: () => void;
