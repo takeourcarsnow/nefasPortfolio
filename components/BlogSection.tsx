@@ -22,11 +22,9 @@ export const BlogSection: React.FC = () => {
   }, [active]);
 
   const toggle = useCallback((title: string) => {
-    console.log('[BlogSection] toggle called for', title);
     setExpanded(prev => {
       const next = new Set(prev);
       if (next.has(title)) next.delete(title); else next.add(title);
-      console.log('[BlogSection] expanded now', [...next]);
       return next;
     });
   }, [setExpanded]);

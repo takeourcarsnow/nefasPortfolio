@@ -45,9 +45,9 @@ export function usePerformanceMonitor() {
             // eslint-disable-next-line no-console
             console.info(`Paint: ${entry.name} @ ${Math.round(entry.startTime)}ms`);
           } else if (entry.entryType === 'layout-shift') {
-            // layout-shift entries may expose a `value` property in supported browsers
-            // eslint-disable-next-line no-console
-            console.info(`Layout shift (CLS): ${(((entry as unknown) as { value?: number }).value ?? 0).toFixed(3)}`);
+            // Layout shift monitoring - value available in supported browsers
+            // Commented out to avoid console spam
+            // console.info(`Layout shift (CLS): ${(((entry as unknown) as { value?: number }).value ?? 0).toFixed(3)}`);
           }
         } catch (err) {
           // eslint-disable-next-line no-console

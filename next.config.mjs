@@ -15,7 +15,7 @@ nextConfig.headers = async () => {
   const isDev = process.env.NODE_ENV === 'development';
   const csp = [
     "default-src 'self' https:",
-    `script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
+    `script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.instagram.com 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: https:",
     "font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com",

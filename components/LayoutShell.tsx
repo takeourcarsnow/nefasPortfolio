@@ -25,9 +25,7 @@ const Inner: React.FC = () => {
     const handler = (e: MouseEvent) => {
       const tgt = e.target as HTMLElement | null;
       if (tgt) {
-        // keep this lightweight for dev diagnostics only
-        // eslint-disable-next-line no-console
-        console.debug('[LayoutShell] click:', tgt.tagName, tgt.className, tgt.id);
+        // click handler for potential future use
       }
     };
     document.addEventListener('click', handler, true);
