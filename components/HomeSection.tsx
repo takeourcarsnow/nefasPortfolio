@@ -9,11 +9,11 @@ import type { PhotoEntry, Render3DItem, VideoItem, WebdevProjectItem, BlogPostMe
 
 export const HomeSection: React.FC = () => {
   const { active, setActive } = useSection();
-  const blogs = useLatest<BlogPostMeta>('/data/posts.json');
-  const videos = useLatest<VideoItem>('/data/videos.json');
-  const photos = useLatest<PhotoEntry>('/data/photos.json');
-  const renders3d = useLatest<Render3DItem>('/data/3d.json');
-  const webdev = useLatest<WebdevProjectItem>('/data/webdev.json');
+  const blogs = useLatest<BlogPostMeta>('/data/posts.json', 2);
+  const videos = useLatest<VideoItem>('/data/videos.json', 2);
+  const photos = useLatest<PhotoEntry>('/data/photos.json', 2);
+  const renders3d = useLatest<Render3DItem>('/data/3d.json', 2);
+  const webdev = useLatest<WebdevProjectItem>('/data/webdev.json', 2);
 
   return (
     <div
@@ -37,9 +37,6 @@ export const HomeSection: React.FC = () => {
                     <p className="home-post-type">[WEBDEV]</p>
                     <h4 className="home-post-title">{obj.title ?? 'untitled'}</h4>
                   </div>
-                  <div>
-                    <p className="home-post-date">{obj.date ? new Date(obj.date).toLocaleDateString() : ''}</p>
-                  </div>
                 </a>
               );
             })}
@@ -60,9 +57,6 @@ export const HomeSection: React.FC = () => {
                       <p className="home-post-type">[ALBUM]</p>
                       <h4 className="home-post-title">{a.title}</h4>
                     </div>
-                    <div>
-                      <p className="home-post-date">{a.date ? new Date(a.date).toLocaleDateString() : ''}</p>
-                    </div>
                   </a>
                 );
               }
@@ -73,9 +67,6 @@ export const HomeSection: React.FC = () => {
                   <div>
                     <p className="home-post-type">[PHOTO]</p>
                     <h4 className="home-post-title">{photo.title}</h4>
-                  </div>
-                  <div>
-                    <p className="home-post-date">{photo.date ? new Date(photo.date).toLocaleDateString() : ''}</p>
                   </div>
                 </a>
               );
@@ -95,9 +86,6 @@ export const HomeSection: React.FC = () => {
                   <p className="home-post-type">[3D]</p>
                   <h4 className="home-post-title">{r.title}</h4>
                 </div>
-                <div>
-                  <p className="home-post-date">{new Date(r.date).toLocaleDateString()}</p>
-                </div>
               </a>
             )})}
           </div>
@@ -115,9 +103,6 @@ export const HomeSection: React.FC = () => {
                   <p className="home-post-type">[VIDEO]</p>
                   <h4 className="home-post-title">{v.title}</h4>
                 </div>
-                <div>
-                  <p className="home-post-date">{new Date(v.date).toLocaleDateString()}</p>
-                </div>
               </a>
             )})}
           </div>
@@ -131,9 +116,6 @@ export const HomeSection: React.FC = () => {
                 <div>
                   <p className="home-post-type">[BLOG]</p>
                   <h4 className="home-post-title">{b.title}</h4>
-                </div>
-                <div>
-                  <p className="home-post-date">{new Date(b.date).toLocaleDateString()}</p>
                 </div>
               </a>
             ))}

@@ -21,13 +21,24 @@ export const WebdevSection: React.FC = () => {
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>[ERROR] {error}</p>}
       <div className="grid-container">
-  {data?.map((p: WebdevProjectItem) => (
-          <div key={p.title} className="grid-item">
-            <img src={p.image} alt={p.title} style={{ width: '100%', height: 200, objectFit: 'cover', borderRadius: 6 }} />
-            <h3>{p.title}</h3>
-            <p>{p.description}</p>
-          </div>
-        ))}
+  {data?.map((p: WebdevProjectItem) => {
+    const content = (
+      <>
+        <img src={p.image} alt={p.title} style={{ width: '100%', height: 200, objectFit: 'cover', borderRadius: 6 }} />
+        <h3>{p.title}</h3>
+        <p>{p.description}</p>
+      </>
+    );
+    return p.url ? (
+      <a key={p.title} href={p.url} target="_blank" rel="noopener noreferrer" className="grid-item">
+        {content}
+      </a>
+    ) : (
+      <div key={p.title} className="grid-item">
+        {content}
+      </div>
+    );
+  })}
       </div>
     </div>
   );

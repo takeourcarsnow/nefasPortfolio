@@ -10,10 +10,10 @@ export const useFlattenPhotos = (data: PhotoEntry[] | null | undefined): [FlatPh
     const flats: FlatPhoto[] = [];
     const albums: AlbumItem[] = [];
     data.forEach((item: PhotoEntry) => {
-      if ((item as AlbumItem).type === 'album') {
+      if ('photos' in item) {
         const album = item as AlbumItem;
         albums.push(album);
-        album.photos.forEach(p => flats.push({ ...p, albumTitle: album.title }));
+        album.photos.forEach(p => flats.push(Object.assign({}, p, { type: 'photo', date: album.date, tags: album.tags, albumTitle: album.title })));
       } else {
         flats.push(item as PhotoItem);
       }

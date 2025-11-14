@@ -21,11 +21,11 @@
   },
   {
     "id": "tunedin",
-    "title": "TunedIn",
+    "title": "TunedIn.space",
     "description": "a social media platform for sharing your favorite music",
     "image": "images/webdev/tunedin.jpg",
     "thumbnail": "images/webdev/tunedin.jpg",
-    "url": "",
+    "url": "https://www.tunedin.space/",
     "date": "2025-11-14",
     "tags": ["webdev", "social", "music"]
   },
