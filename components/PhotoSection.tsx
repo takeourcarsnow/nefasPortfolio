@@ -9,16 +9,19 @@ import { InstagramEmbed } from './InstagramEmbed.tsx';
 import { AlbumItemComponent } from './AlbumItem.tsx';
 import { PhotoItemComponent } from './PhotoItem.tsx';
 import type { PhotoEntry, PhotoItem, AlbumItem } from '../lib/types/content.ts';
-import { ViewerModal } from './ViewerModal.tsx';
 
 interface FlatPhoto extends PhotoItem { albumTitle?: string; }
 
 export const PhotoSection: React.FC = () => {
   const { active } = useSection();
   const { data, loading, error } = useFetchJson<PhotoEntry[]>('/data/photos.json');
-  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
 
   const [flatPhotos, albums]: [FlatPhoto[], AlbumItem[]] = useFlattenPhotos(data);
+
+  const openImage = (url: string) => window.open(url, '_blank');
+
+  const displayedPhotos = selectedAlbum ? flatPhotos.filter(p => p.albumTitle === selectedAlbum) : flatPhotos;
 
   return (
     <div
@@ -32,33 +35,31 @@ export const PhotoSection: React.FC = () => {
 
       <InstagramEmbed />
 
+      {selectedAlbum && (
+        <button onClick={() => setSelectedAlbum(null)} style={{ marginBottom: '1rem', background: 'none', border: '1px solid var(--secondary-color)', color: 'var(--secondary-color)', padding: '0.5rem', cursor: 'pointer' }}>
+          &lt; Back to Albums
+        </button>
+      )}
+
       {loading && <p>Loading photos...</p>}
       {error && <p style={{ color: 'red' }}>[ERROR] {error}</p>}
       {!loading && !error && (
         <div className="grid-container">
-          {albums.map((a) => (
+          {!selectedAlbum && albums.map((a) => (
             <AlbumItemComponent
               key={a.title}
               album={a}
-              onClick={() => setViewerIndex(flatPhotos.findIndex(p => p.albumTitle === a.title))}
+              onClick={() => setSelectedAlbum(a.title)}
             />
           ))}
-            {flatPhotos.map((p: FlatPhoto, i: number) => (
+          {selectedAlbum && displayedPhotos.map((p: FlatPhoto, i: number) => (
             <PhotoItemComponent
               key={p.image + i}
               photo={p}
-              onClick={() => setViewerIndex(i)}
+              onClick={() => openImage(p.image)}
             />
           ))}
         </div>
-      )}
-      {viewerIndex !== null && viewerIndex >= 0 && (
-        <ViewerModal
-          photos={flatPhotos}
-          index={viewerIndex}
-          onClose={() => setViewerIndex(null)}
-          setIndex={(i) => setViewerIndex(i)}
-        />
       )}
     </div>
   );

@@ -27,7 +27,6 @@ body {
     font-family: var(--font);
     font-size: 1.8rem; /* 18px */
     line-height: 1.6;
-    overflow: hidden; /* Initially hidden to prevent scrollbar during preloader */
     cursor: default;
     /* Enable hardware acceleration for better performance */
     -webkit-font-smoothing: antialiased;
@@ -40,8 +39,6 @@ body {
 
 /* Enable scrolling after preloader */
 body.preloader-complete {
-    overflow-x: hidden; /* Only hide horizontal scrollbar */
-    overflow-y: auto; /* Explicitly allow vertical scrolling */
 }
 
 a {
@@ -63,15 +60,6 @@ a:hover {
 h1, h2, h3 {
     text-shadow: 0 0 0.5rem var(--glow-color);
     will-change: text-shadow;
-}
-
-/* Ensure all images are visible by default */
-img {
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: block;
-    max-width: 100%;
-    height: auto;
 }
 
 h1 { 
