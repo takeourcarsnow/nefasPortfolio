@@ -1,3 +1,12 @@
+/* Hide scrollbars globally */
+html, body {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
+}
+
 /* --- [ MAIN LAYOUT ] --- */
 .site-container {
     max-width: 100rem;
@@ -6,10 +15,9 @@
     padding-bottom: 0; /* Remove bottom padding since footer handles spacing */
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    animation: fadeIn 1s 2.5s forwards; /* Delay matches preloader */
+    animation: fadeIn 1s 0s forwards;
     min-height: 100vh; /* Full height */
-    scrollbar-width: thin;
-    scrollbar-color: var(--main-color) var(--bg-color);
+    scrollbar-width: none;
     /* Performance optimizations */
     will-change: opacity, transform;
     contain: layout style paint;
@@ -18,17 +26,8 @@
     flex-direction: column;
 }
 
-.site-container::-webkit-scrollbar { 
-    width: 0.8rem; 
-}
-
-.site-container::-webkit-scrollbar-track { 
-    background: var(--bg-color); 
-}
-
-.site-container::-webkit-scrollbar-thumb { 
-    background-color: var(--main-color); 
-    border-radius: 0.4rem;
+.site-container::-webkit-scrollbar {
+    display: none;
 }
 
 main {

@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="robots" content="index,follow" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body style={{ fontFamily: 'VT323, monospace', background: 'linear-gradient(135deg,#0a0a0a 0%,#0a0a0f 25%,#0a0a0a 50%,#0f0a0f 75%,#0a0a0a 100%)', color: '#00ff9d' }}>
+      <body style={{ fontFamily: 'VT323, monospace', color: '#00ff9d' }}>
         {children}
       </body>
     </html>

@@ -1,26 +1,21 @@
 "use client";
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Header } from './Header.tsx';
 import { BackgroundEffects } from './BackgroundEffects.tsx';
 import { WinampPlayer } from './WinampPlayer.tsx';
 import { Navigation } from './Navigation.tsx';
 import { FooterTimestamp } from './FooterTimestamp.tsx';
 import { SectionProvider } from './SectionContext.tsx';
-import { usePerformanceMonitor } from './hooks.ts';
 import { ErrorBoundary } from './ErrorBoundary.tsx';
-
-// Use React.lazy for client-side code splitting (avoids importing next/dynamic types in client files)
-const HomeSection = React.lazy(() => import('./HomeSection.tsx').then((m) => ({ default: m.HomeSection })));
-const BlogSection = React.lazy(() => import('./BlogSection.tsx').then((m) => ({ default: m.BlogSection })));
-const PhotoSection = React.lazy(() => import('./PhotoSection.tsx').then((m) => ({ default: m.PhotoSection })));
-const VideoSection = React.lazy(() => import('./VideoSection.tsx').then((m) => ({ default: m.VideoSection })));
-const Renders3DSection = React.lazy(() => import('./Renders3DSection.tsx').then((m) => ({ default: m.Renders3DSection })));
-const WebdevSection = React.lazy(() => import('./WebdevSection.tsx').then((m) => ({ default: m.WebdevSection })));
-const MiscSection = React.lazy(() => import('./MiscSection.tsx').then((m) => ({ default: m.MiscSection })));
+import { HomeSection } from './HomeSection.tsx';
+import { BlogSection } from './BlogSection.tsx';
+import { PhotoSection } from './PhotoSection.tsx';
+import { VideoSection } from './VideoSection.tsx';
+import { Renders3DSection } from './Renders3DSection.tsx';
+import { WebdevSection } from './WebdevSection.tsx';
+import { MiscSection } from './MiscSection.tsx';
 
 const Inner: React.FC = () => {
-  usePerformanceMonitor();
-
   React.useEffect(() => {
     const handler = (e: MouseEvent) => {
       const tgt = e.target as HTMLElement | null;
@@ -41,15 +36,13 @@ const Inner: React.FC = () => {
         <Navigation />
         <main id="content-area">
           <ErrorBoundary>
-            <Suspense fallback={<div className="section-loading">Loading sections...</div>}>
-              <HomeSection />
-              <VideoSection />
-              <PhotoSection />
-              <Renders3DSection />
-              <WebdevSection />
-              <BlogSection />
-              <MiscSection />
-            </Suspense>
+            <HomeSection />
+            <VideoSection />
+            <PhotoSection />
+            <Renders3DSection />
+            <WebdevSection />
+            <BlogSection />
+            <MiscSection />
           </ErrorBoundary>
         </main>
         <footer>

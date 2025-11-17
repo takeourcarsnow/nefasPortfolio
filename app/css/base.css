@@ -11,6 +11,15 @@ html {
     font-size: 62.5%; /* 1rem = 10px for easier calculations */
     scroll-behavior: smooth;
     height: 100%;
+    background: 
+        linear-gradient(135deg, 
+            var(--bg-color) 0%, 
+            #0a0a0f 25%, 
+            var(--bg-color) 50%, 
+            #0f0a0f 75%, 
+            var(--bg-color) 100%);
+    background-size: 400% 400%;
+    background-attachment: fixed;
 }
 
 body {
@@ -23,6 +32,7 @@ body {
             var(--bg-color) 100%);
     background-size: 400% 400%;
     animation: gradient-shift 20s ease infinite;
+    background-attachment: fixed;
     color: var(--main-color);
     font-family: var(--font);
     font-size: 1.8rem; /* 18px */
