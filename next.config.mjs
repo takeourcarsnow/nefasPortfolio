@@ -20,7 +20,7 @@ nextConfig.headers = async () => {
     "img-src 'self' data: https:",
     "font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com",
     "connect-src 'self' https://api.github.com https://*.supabase.co https:",
-    "frame-src https://www.youtube.com https://player.vimeo.com",
+    "frame-src https://www.youtube.com https://player.vimeo.com https://www.instagram.com",
   ].join('; ');
 
   return [
