@@ -5,13 +5,12 @@ import { useTerminalTyping } from '../lib/hooks/useTerminalTyping.ts';
 import { usePersistedState } from '../lib/hooks/usePersistedState.ts';
 import { BlogSnippet } from './BlogSnippet.tsx';
 
-interface Post { id: string; title: string; date: string; tags: string[]; content: { en: string[]; lt?: string[] }; }
+interface Post { id: string; title: string; date: string; tags: string[]; content: { en: string[] }; }
 
 export const BlogSection: React.FC = () => {
   const { active } = useSection();
   const [posts, setPosts] = useState<Post[]>([]);
   const [expanded, setExpanded] = usePersistedState<Set<string>>('expandedPosts', new Set());
-  const [lang, setLang] = usePersistedState<'en' | 'lt'>('blogLang', 'en');
 
   const { terminalRef, terminalDone } = useTerminalTyping(active === 'blog-content', 'blog');
 
@@ -44,8 +43,6 @@ export const BlogSection: React.FC = () => {
               post={p}
               index={idx}
               isOpen={expanded.has(p.title)}
-              lang={lang}
-              setLang={setLang}
               onToggle={toggle}
             />
           ))}
