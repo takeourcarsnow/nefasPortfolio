@@ -16,8 +16,8 @@ export const VideoSection: React.FC = () => {
       style={{ display: active === 'video-content' ? 'block' : 'none' }}
     >
   <h2>&gt; video feed</h2>
-      <TerminalLines sectionId="video-content" />
-  <p>a collection of moving pictures to rot your brain. i&apos;ll replace these with my own stuff eventually. probably.</p>
+        <TerminalLines sectionId="video-content" />
+      <p>&gt; a collection of moving pictures to rot your brain. i&apos;ll replace these with my own stuff eventually. probably.</p>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>[ERROR] {error}</p>}
       <div className="grid-container">

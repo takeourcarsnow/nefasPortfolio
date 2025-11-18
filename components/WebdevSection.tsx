@@ -17,7 +17,7 @@ export const WebdevSection: React.FC = () => {
     >
   <h2>&gt; webdev projects</h2>
       <TerminalLines sectionId="webdev-content" />
-      <p>i occasionally write code that gets deployed to the internet. no startup grind, no VC buzzwords — just late-night commits and whatever felt fun to build.</p>
+      <p>&gt; i occasionally write code that gets deployed to the internet. no startup grind, no VC buzzwords — just late-night commits and whatever felt fun to build.</p>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>[ERROR] {error}</p>}
       <div className="grid-container">

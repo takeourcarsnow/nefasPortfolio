@@ -9,11 +9,11 @@ import type { PhotoEntry, Render3DItem, VideoItem, WebdevProjectItem, BlogPostMe
 
 export const HomeSection: React.FC = () => {
   const { active, setActive } = useSection();
-  const blogs = useLatest<BlogPostMeta>('/data/posts.json', 2);
-  const videos = useLatest<VideoItem>('/data/videos.json', 2);
-  const photos = useLatest<PhotoEntry>('/data/photos.json', 2);
-  const renders3d = useLatest<Render3DItem>('/data/3d.json', 2);
-  const webdev = useLatest<WebdevProjectItem>('/data/webdev.json', 2);
+  const blogs = useLatest<BlogPostMeta>('/data/posts.json', 3);
+  const videos = useLatest<VideoItem>('/data/videos.json', 3);
+  const photos = useLatest<PhotoEntry>('/data/photos.json', 3);
+  const renders3d = useLatest<Render3DItem>('/data/3d.json', 3);
+  const webdev = useLatest<WebdevProjectItem>('/data/webdev.json', 3);
 
   return (
     <div
@@ -22,7 +22,7 @@ export const HomeSection: React.FC = () => {
       style={{ display: active === 'home-content' ? 'block' : 'none' }}
     >
       <TerminalLines sectionId="home-content" />
-      <ContentBlock title="> latest web stuff" caption="building and hoping that it just works" onJump={() => setActive('webdev-content')}>
+      <ContentBlock title="> latest web stuff" caption="> building and hoping that it just works" onJump={() => setActive('webdev-content')}>
         {webdev.loading ? (
           <p>Loading...</p>
         ) : (
@@ -43,7 +43,7 @@ export const HomeSection: React.FC = () => {
           </div>
         )}
       </ContentBlock>
-      <ContentBlock title="> fresh photos" caption="megapixels and emulsion" onJump={() => setActive('photo-content')}>
+      <ContentBlock title="> fresh photos" caption="> megapixels and emulsion" onJump={() => setActive('photo-content')}>
         {photos.loading ? <p>Loading...</p> : (
           <div className="grid-container">
             {photos.data.map((p, idx) => {
@@ -74,7 +74,7 @@ export const HomeSection: React.FC = () => {
           </div>
         )}
       </ContentBlock>
-      <ContentBlock title="> new renders" caption="fresh cgi right off the gpu" onJump={() => setActive('3d-content')}>
+      <ContentBlock title="> new renders" caption="> fresh cgi right off the gpu" onJump={() => setActive('3d-content')}>
         {renders3d.loading ? <p>Loading...</p> : (
           <div className="grid-container">
             {renders3d.data.map((r, idx) => {
@@ -91,7 +91,7 @@ export const HomeSection: React.FC = () => {
           </div>
         )}
       </ContentBlock>
-  <ContentBlock title="> latest videos" caption="a collection of moving pictures. i&apos;ll replace these with my own stuff eventually. probably." onJump={() => setActive('video-content')}>
+  <ContentBlock title="> latest videos" caption="> a collection of moving pictures. i&apos;ll replace these with my own stuff eventually. probably." onJump={() => setActive('video-content')}>
         {videos.loading ? <p>Loading...</p> : (
           <div className="grid-container">
             {videos.data.map((v, idx) => {
@@ -108,7 +108,7 @@ export const HomeSection: React.FC = () => {
           </div>
         )}
       </ContentBlock>
-      <ContentBlock title="> recent blogs" caption="fresh thoughts for your brain" onJump={() => setActive('blog-content')}>
+      <ContentBlock title="> recent blogs" caption="> fresh thoughts for your brain" onJump={() => setActive('blog-content')}>
         {blogs.loading ? <p>Loading...</p> : (
           <div className="grid-container">
             {blogs.data.map((b, idx) => (

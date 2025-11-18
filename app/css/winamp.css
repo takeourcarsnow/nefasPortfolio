@@ -1,6 +1,6 @@
 /* --- [ MUSIC PLAYER ] --- */
 #winamp {
-    margin: 15px auto 0 auto;
+    margin: 15px auto 30px auto;
     width: 100%;
     max-width: 280px;
     user-select: none;
@@ -106,7 +106,7 @@
 @media (max-width: 768px) {
     #winamp {
         max-width: 250px;
-        margin: 12px auto 0 auto;
+        margin: 12px auto 30px auto;
     }
     
     .winamp-song-info {
@@ -143,7 +143,7 @@
 @media (max-width: 480px) {
     #winamp {
         max-width: 180px;
-        margin: 10px auto 0 auto;
+        margin: 10px auto 30px auto;
     }
     
     .winamp-controls {

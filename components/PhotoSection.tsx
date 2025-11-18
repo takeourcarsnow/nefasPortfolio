@@ -31,7 +31,7 @@ export const PhotoSection: React.FC = () => {
     >
   <h2>&gt; photography</h2>
       <TerminalLines sectionId="photo-content" />
-      <p>i point my camera at things. mostly around the streets.</p>
+      <p>&gt; i point my camera at things. mostly around the streets.</p>
 
       <InstagramEmbed />
 

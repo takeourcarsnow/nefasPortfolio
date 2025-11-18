@@ -4,9 +4,8 @@ import { TerminalLines } from './TerminalLines.tsx';
 import { useSection } from './SectionContext.tsx';
 import { useFetchJson } from './hooks.ts';
 
-interface Thought { text: string; date?: string; }
-interface StatusItem { message: string; date: string; }
-interface Artifact { name: string; url: string; }
+interface StatusItem { msg: string; date: string; }
+interface Artifact { name: string; path: string; desc: string; }
 interface LinkItem { title: string; url: string; }
 
 const AccordionSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
@@ -52,7 +51,6 @@ const AccordionSection: React.FC<{ title: string; children: React.ReactNode }> =
 export const MiscSection: React.FC = () => {
   const { active } = useSection();
   const links = useFetchJson<LinkItem[]>('/data/links.json');
-  const thoughts = useFetchJson<Thought[]>('/data/thoughts.json');
   const artifacts = useFetchJson<Artifact[]>('/data/artifacts.json');
   const status = useFetchJson<StatusItem[]>('/data/status.json');
   return (
@@ -63,7 +61,8 @@ export const MiscSection: React.FC = () => {
     >
   <h2>&gt; misc</h2>
       <TerminalLines sectionId="misc-content" />
-  <p>a digital shoebox for things that don&apos;t fit anywhere else. links, files, random thoughts. check back once in a while.</p>
+
+  <p>&gt; a digital shoebox for things that don&apos;t fit anywhere else. links, files. check back once in a while.</p>
       
       <AccordionSection title="&gt;&gt; interesting links">
         <div className="links-container">
@@ -72,24 +71,17 @@ export const MiscSection: React.FC = () => {
         </div>
       </AccordionSection>
       
-      <AccordionSection title="&gt;&gt; random thoughts">
-        <div className="misc-thoughts">
-          {thoughts.loading && <p>Loading thoughts...</p>}
-          {thoughts.data?.map((t: Thought, i: number) => <p key={(t.date as string) ?? i}>{t.text}</p>)}
-        </div>
-      </AccordionSection>
-      
       <AccordionSection title="&gt;&gt; digital artifacts">
         <div className="artifacts-list">
           {artifacts.loading && <p>Loading artifacts...</p>}
-          {artifacts.data?.map((a: Artifact, i: number) => <p key={a.url ?? a.name ?? i}><a href={a.url} download>{a.name}</a></p>)}
+          {artifacts.data?.map((a: Artifact, i: number) => <p key={a.path ?? a.name ?? i}><a href={'/data/' + a.path} download>{a.name}</a> - {a.desc}</p>)}
         </div>
       </AccordionSection>
       
       <AccordionSection title="&gt;&gt; status updates">
         <div className="status-log">
           {status.loading && <p>Loading status...</p>}
-          {status.data?.map((s: StatusItem, i: number) => <p key={s.date ?? i}>{s.date}: {s.message}</p>)}
+          {status.data?.map((s: StatusItem, i: number) => <p key={s.date ?? i}>{s.date}: {s.msg}</p>)}
         </div>
       </AccordionSection>
     </div>
